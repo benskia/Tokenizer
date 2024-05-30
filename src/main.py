@@ -8,6 +8,8 @@ def main() -> None:
     [words.extend(chunk) for chunk in chunk_words(document, buffer_size)]
     print(len(words))
 
+    # TODO: clean words
+
 
 def chunk_words(filepath: str, buffer_size: int) -> Iterator[list[str]]:
     position: int = 0
