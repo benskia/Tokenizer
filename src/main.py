@@ -9,21 +9,14 @@ class Trie:
         self.end_symbol = "\0"
 
     def __repr__(self) -> str:
-
-        def list_words_r(trie: dict, end_symbol: str) -> list:
+        def list_words_r(trie: dict) -> list[str]:
             words = []
             for k, v in trie.items():
-                if k != end_symbol:
-                    for ch in list_words_r(v, end_symbol):
-                        words.append(k + ch)
-                else:
-                    words.append(f" : {v}")
+                if k != self.end_symbol:
+                    pass
             return words
 
-        output = ""
-        for word in list_words_r(self.root, self.end_symbol):
-            output += f"{word}\n"
-        return output
+        return ""
 
     def add(self, word: str) -> None:
         current = self.root
