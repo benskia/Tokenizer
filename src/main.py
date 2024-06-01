@@ -1,33 +1,5 @@
-import re
 from typing import Iterator
-
-
-class Trie:
-
-    def __init__(self) -> None:
-        self.root = {}
-        self.end_symbol = "\0"
-
-    def __repr__(self) -> str:
-        def list_words_r(trie: dict) -> list[str]:
-            words = []
-            for k, v in trie.items():
-                if k != self.end_symbol:
-                    pass
-            return words
-
-        return ""
-
-    def add(self, word: str) -> None:
-        current = self.root
-        for letter in word:
-            if letter not in current:
-                current[letter] = {}
-                current = current[letter]
-        if self.end_symbol not in current:
-            current[self.end_symbol] = 1
-        else:
-            current[self.end_symbol] += 1
+from trie import Trie
 
 
 def main() -> None:
@@ -37,14 +9,10 @@ def main() -> None:
     print(keywords)
 
 
-def remove_symbols_from_word(word: str) -> str:
-    return re.sub(r"[^\w]", "", word)
-
-
 def chunk_to_words(chunk: Iterator[list[str]]) -> Trie:
     keywords = Trie()
     for word in [word for words in chunk for word in words]:
-        keywords.add(remove_symbols_from_word(word))
+        keywords.add(word)
     return keywords
 
 
